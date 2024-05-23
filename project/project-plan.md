@@ -2,33 +2,31 @@
 
 ## Title
 
-Exploring the correlation of Temperature, Rainfall, and Humidity in North-east England: A Decadal Analysis (2010-2019).
+Investigating the Impact of Weather Conditions on Traffic Flow in Dublin
 
 ## Main Question
 
-To how much extent do the factors temperature and humidity effect the amount of rainfall in the city Newcastle upon Tyne.
+How do daily weather conditions affect traffic flow in Dublin? Is there a significant correlation between weather parameters and traffic patterns?
 
 ## Description
 
-The project's goal is to assess and illustrate the correlation between humidity, temperature and avergae rainfall. Agriculture and tourism are two examples of industries that can minimise risks and optimise operations related to climate variability. To understand the complex interaction of these variables, the approach involves statistical analysis and data visualisation techniques. Hoping that the findings will aid in a better understanding of local climate dynamics.
+The purpose of this study is to investigate the relationship between weather and traffic flow in Dublin. I want to see if there is a significant correlation between daily traffic data and weather parameters like temperature, rainfall, humidity, and wind speed. Understanding this correlation can provide valuable insights for city planners and traffic management authorities, assisting in improving traffic flow and reducing congestion. In this study I plan to use statistical analysis and data visualisation techniques to identify patterns and trends, providing a comprehensive picture of how weather affects traffic in Dublin.
 
 ## Datasources
 
-### Datasource1: Average rainfall and temperature data
-* Metadata URL: https://www.kaggle.com/datasets/aryakrishnanar/average-rainfall-and-temperature-in-uk20102019
-* Data URL: https://www.kaggle.com/datasets/aryakrishnanar/average-rainfall-and-temperature-in-uk20102019?select=avg_rainfalltemp+in+UK+-+Sheet1.csv
+### Datasource1: Traffic Congestion Saturation Flow Data
+* Metadata URL: https://data.gov.ie/dataset/traffic-flow-data-jan-to-june-2021-sdcc/resource/62f76e7d-a289-4675-b208-cf9078730b0b?inner_span=True
+* Data URL: https://data-sdublincoco.opendata.arcgis.com/datasets/sdublincoco::traffic-flow-data-jan-to-june-2021-sdcc.csv
 * Data Type: CSV
 
-This file contains average rainfall (mm) and average temperature (centigrade) for the North East England for the period 2010-2019.
-
-This dataset shows the average rainfall in millimeters and average temperature in centigrade by month, year, and meteorological season. It also has an annual figure for each year.
+This file contains South Dublin County Council(SDCC) Traffic Congestion Saturation Flow Data for January to June 2021.
 
 ### Datasource2: Weather data
 * Metadata URL: N/A
-* Data URL: https://power.larc.nasa.gov/data-access-viewer/
+* Data URL: https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/retrievebulkdataset?&key=JFUWSDF8WDRYFZZFBZ3W9M8FE&taskId=82943c3c20942672294f3f2292ede040&zip=false
 * Data Type: CSV
 
-This file contains temperature and humidity data for 2010-2019.
+This file contains temperature, humidity and other weather related data for January to June 2021.
 
 ## Work Packages
 
