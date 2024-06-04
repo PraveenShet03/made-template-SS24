@@ -22,7 +22,7 @@ The purpose of this study is to investigate the relationship between weather and
 This file contains South Dublin County Council(SDCC) Traffic Congestion Saturation Flow Data for January to June 2021.
 
 ### Datasource2: Weather data
-* Metadata URL: N/A
+* Metadata URL: https://www.visualcrossing.com/resources/documentation/weather-data/weather-data-documentation/
 * Data URL: https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/retrievebulkdataset?&key=JFUWSDF8WDRYFZZFBZ3W9M8FE&taskId=82943c3c20942672294f3f2292ede040&zip=false
 * Data Type: CSV
 
