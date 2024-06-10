@@ -1,0 +1,78 @@
+pipeline TemperaturesPipeline {
+    TemperaturesDataExtractor
+        ->TemperaturesTextFileInterpreter
+        ->TemperaturesCSVInterpreter
+        ->TemperaturesColumnDeleter
+        ->TemperaturesRowDeleter
+        ->TemperaturesTableInterpreter
+        ->TemperaturesTransformer
+        ->BatteryTemperaturesTransformer
+        ->TemperaturesDatabaseloader; 
+
+    block TemperaturesDataExtractor oftype LocalFileExtractor {
+        filePath: "data.csv";
+    }
+
+    block TemperaturesTextFileInterpreter oftype TextFileInterpreter {}
+
+    block TemperaturesCSVInterpreter oftype CSVInterpreter {
+        delimiter : ';';
+    }
+
+    block TemperaturesTableInterpreter oftype TableInterpreter {
+        header : false;
+        columns : [
+            "id" oftype PositiveId,
+            "producer" oftype text,
+            "model" oftype text,
+            "month" oftype Months,
+            "temperature" oftype decimal,
+            "battery_temperature" oftype decimal,
+        ];
+    }
+
+    block TemperaturesColumnDeleter oftype ColumnDeleter {
+        delete: [column F,column G,column H,column I];
+    }
+
+    block TemperaturesRowDeleter oftype RowDeleter {
+        delete: [row 1];
+    }
+
+    valuetype PositiveId oftype integer {
+        constraints: [ PositiveIdConstraint ];
+    }
+
+    constraint PositiveIdConstraint on integer:
+        value >= 0;
+    
+    valuetype Months oftype integer {
+        constraints: [ MonthsConstraint ];
+    }
+
+    constraint MonthsConstraint on integer:
+        value >= 0 and value <= 12;
+
+    block TemperaturesTransformer oftype TableTransformer {
+        inputColumns: ['temperature'];
+        outputColumn: 'temperature';
+        use: CelsiusToFahrenheit;
+    }
+
+    block BatteryTemperaturesTransformer oftype TableTransformer {
+        inputColumns: ['battery_temperature'];
+        outputColumn: 'battery_temperature';
+        use: CelsiusToFahrenheit;
+    }
+
+    transform CelsiusToFahrenheit {
+        from Celsius_temperature oftype decimal;
+        to Fahrenheit_temperature oftype decimal;
+        Fahrenheit_temperature: round((Celsius_temperature * 9/5) + 32);
+    }
+
+    block TemperaturesDatabaseloader oftype SQLiteLoader {
+        table : "temperatures";
+        file : "./temperatures.sqlite";
+    } 
+}
