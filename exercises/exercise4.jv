@@ -75,7 +75,7 @@ pipeline TemperaturesPipeline {
     transform CelsiusToFahrenheit {
         from Celsius_temperature oftype decimal;
         to Fahrenheit_temperature oftype decimal;
-        Fahrenheit_temperature: round((Celsius_temperature * 9/5) + 32);
+        Fahrenheit_temperature: (Celsius_temperature * 9/5) + 32;
     }
 
     block TemperaturesDatabaseloader oftype SQLiteLoader {
