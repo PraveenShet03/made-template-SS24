@@ -1,6 +1,5 @@
 .DS_Store
 /data/*
 !/data/.gitkeep
-/exercises/*.sqlite
 /exercises/*.csv
 /project/__pycache__/process.cpython-310.pyc
