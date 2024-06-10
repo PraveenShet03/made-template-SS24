@@ -1,5 +1,6 @@
 pipeline TemperaturesPipeline {
     TemperaturesDataExtractor
+        ->TemperaturesCSVFilePicker 
         ->TemperaturesTextFileInterpreter
         ->TemperaturesCSVInterpreter
         ->TemperaturesColumnDeleter
@@ -7,13 +8,19 @@ pipeline TemperaturesPipeline {
         ->TemperaturesTableInterpreter
         ->TemperaturesTransformer
         ->BatteryTemperaturesTransformer
-        ->TemperaturesDatabaseloader; 
+        ->TemperaturesDatabaseloader;
 
-    block TemperaturesDataExtractor oftype LocalFileExtractor {
-        filePath: "data.csv";
+    block TemperaturesDataExtractor oftype GTFSExtractor {
+        url: "https://www.mowesta.com/data/measure/mowesta-dataset-20221107.zip";
     }
 
-    block TemperaturesTextFileInterpreter oftype TextFileInterpreter {}
+    block TemperaturesCSVFilePicker oftype FilePicker {
+        path: "/data.csv";
+    }
+
+    block TemperaturesTextFileInterpreter oftype TextFileInterpreter {
+        encoding: "utf8";
+    }
 
     block TemperaturesCSVInterpreter oftype CSVInterpreter {
         delimiter : ';';
