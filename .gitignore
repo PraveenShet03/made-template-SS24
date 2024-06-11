@@ -1,6 +1,5 @@
 .DS_Store
-data/traffic_flow_data.csv
-data/weather_data.csv
+data/*
 !/data/.gitkeep
 /exercises/*.sqlite
 /exercises/*.csv
