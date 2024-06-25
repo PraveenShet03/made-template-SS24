@@ -1,0 +1,48 @@
+name: Project Tests
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - project/**
+
+jobs:
+  project-tests-feedback:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          path: main
+
+      # Set up Python version
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10.4'
+      
+      # Print Python version and pip version
+      - name: Print Python and pip version
+        run: |
+          python --version
+          pip --version
+
+      # Install dependencies from requirements.txt
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r ./project/requirements.txt -v
+      
+      # List installed packages
+      - name: List installed packages
+        run: |
+          pip list
+
+      # Run tests.sh script
+      - name: Run tests
+        run: |
+          chmod +x ./project/tests.sh
+          echo "> Tests run starting..."
+          ./project/tests.sh
+          echo "> Tests run completed successfully!"
