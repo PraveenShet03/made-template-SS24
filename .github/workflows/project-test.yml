@@ -41,11 +41,13 @@ jobs:
       
       # Make pipeline.sh script executable
       - name: Make the pipeline script executable
-          run: chmod +x ./project/pipeline.sh
+        run: |
+          chmod +x ./project/pipeline.sh
       
       # Run pipeline.sh script
       - name: Run pipeline script
-          run: ./project/pipeline.sh
+        run: |
+          ./project/pipeline.sh
 
       # Run tests.sh script
       - name: Run tests
