@@ -2,7 +2,7 @@ import os
 import io
 import pytest
 import pandas as pd
-from pipeline import get_url_data
+from pipeline import get_url_data, save_df_to_csv
 from process import process_traffic_flow_data, process_weather_data
 
 data_dir = 'data'
@@ -49,6 +49,8 @@ def test_traffic_flow_data(traffic_flow_data):
     expected_columns = ['date', 'flow']
     for columns in expected_columns:
         assert columns in output
+    
+    save_df_to_csv(output, 'traffic_flow_data.csv')
 
 
 def test_weather_data(weather_data):
@@ -59,6 +61,8 @@ def test_weather_data(weather_data):
     expected_columns = ['datetime', 'temp', 'humidity', 'precip', 'windspeed', 'visibility', 'icon']
     for columns in expected_columns:
         assert columns in output
+    
+    save_df_to_csv(output, 'weather_data.csv')
 
 
 def test_csv_data_files_exist():

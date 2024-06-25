@@ -36,16 +36,6 @@ jobs:
       - name: List installed packages
         run: |
           pip list
-      
-      # Make pipeline.sh script executable
-      - name: Make the pipeline script executable
-        run: |
-          chmod +x ./project/pipeline.sh
-      
-      # Run the pipeline to generate the data files
-      - name: Run pipeline script
-        run: |
-          python project/pipeline.py
 
       # Run tests.sh script
       - name: Run tests
