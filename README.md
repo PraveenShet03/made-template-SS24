@@ -10,7 +10,7 @@
 
 Investigating the Impact of Weather Conditions on Traffic Flow in Dublin
 
-<img src="project\made.jpg" width="800" height="466">
+<img src="project\made.png" width="800" height="466">
 
 ### Main Question
 
